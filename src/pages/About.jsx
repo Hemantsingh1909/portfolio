@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { FaLinkedin, FaGithub, FaFacebook, FaTwitter, FaYoutube} from'react-icons/fa'
-import SocialIcon from '../SocialIcon/SocialIcon';
 
 const About = () => {
   return (
