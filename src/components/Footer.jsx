@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <>
       <footer className="relative pb-28 pt-28 bg-[#090F34] z-10">
-        <div className="max-w-full mx-auto pr-36 pl-20">
+        <div className="max-w-full mx-auto mr-36 ml-20">
           <div className="flex flex-wrap justify-between text-white pb-16">
             <div className="w-2/6 pl-9">
               <h2 className="font-bold text-[44px] mb-2">Lets Talk!</h2>

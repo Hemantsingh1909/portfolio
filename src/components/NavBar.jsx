@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import styles from "../styles/Navbar.module.css"; // Import CSS module
+import DownloadCV from "./DownloadCV";
 
 const NavBar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,10 +21,13 @@ const NavBar = () => {
           {["Home", "About", "Services", "Pricing", "Contact"].map((item) => (
             <li key={item}>
               <NavLink
-                to={`/${item.toLowerCase()}`}
+                to={item === "Home" ? "/" : `/${item.toLowerCase()}`} // "Home" redirects to "/"
                 className={({ isActive }) =>
-                  `${styles.navItem} ${isActive ? styles.active : ""}`
+                  `${styles.navItem} ${
+                    item === "Home" ? "" : isActive ? styles.active : "" // Prevent Home from being highlighted
+                  }`
                 }
+                onClick={() => setDropdownOpen(false)} // Ensure dropdown does not open on click
               >
                 {item}
               </NavLink>
@@ -72,9 +76,9 @@ const NavBar = () => {
         </ul>
 
         {/* Download CV Button on the Right */}
-        <button className={styles.downloadBtn} aria-label="Download CV">
-          Download CV
-        </button>
+
+          <DownloadCV/>
+
       </div>
     </nav>
   );
