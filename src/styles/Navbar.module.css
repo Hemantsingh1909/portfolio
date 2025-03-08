@@ -1,136 +1,90 @@
 /* Navbar Base Styles */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    padding: 10px 0px 10px 60px;
-    background: #FFFFFF; /* Light gray background */
-    border-bottom: 1px solid #d1d1d1; /* Subtle border */
-    font-family: "Segoe UI", sans-serif; /* Windows-like font */
-    height: 140px; /* Add this line to fix navbar height */
-    overflow: visible;
-  }
-  
-  .navbarContainer {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-between;
-    gap: 7rem;
-    height: 100%;
-    padding: 5px 0; /* Add vertical padding */
-  }
-  
-  .navbarLogo{
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-  /* Logo on the Left */
-  .navbarLogo img {
-    height:1%;
-    width: auto;
-    object-fit: contain;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 19px 19px;
-    height: 180%; /* Make image height match logo container */
-    max-height: 150px; /* Control maximum height */
-    min-width: 120px; /* Increase minimum width */
-  }
-  
-  /* Navigation Links in the Middle */
-  .navLinks {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    flex-grow: 1; /* Allow nav-links to take up remaining space */
-    justify-content: center; /* Center the navigation links */
-  }
-  
-  .navItem {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #333;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-radius: 4px;
-  }
-  .navItem svg{
-    margin-left: 5px;
-  }
-  .navItem:hover,
-  .navItem.active {
-    background: #e1e1e1; /* Light hover background */
-    color: #000;
-  }
-  
-  /* Dropdown */
-  .dropdown {
-    position:relative;
-    z-index: 1000;
-  }
-  
-  .dropdownMenu {
-    position: absolute;
-    z-index: 1001; 
-    top: 100%;
-    left: 0;
-    min-width: 200px;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Optional frosted glass effect */
-    border: 1px solid rgba(209, 209, 209, 0.2); /* Semi-transparent border */
-    opacity: 0;
-    transition: 
-    opacity 0.2s ease,
-    visibility 0.2s ease,
-    transform 0.2s ease;
-    visibility: hidden;
-    transform: translateY(-0.5rem);
-  }
-  
-  .dropdownMenu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  
-  .dropdownItem {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: #333;
-    text-decoration: none;
-    transition: background 0.2s ease;
-  }
-  
-  .dropdownItem:hover {
-    background: rgba(240, 240, 240, 0.7); /* Semi-transparent hover */
-  }
-  
-  /* Download Button on the Right */
-  .downloadBtn {
-    padding: 0.5rem 1.5rem;
-    background: #2463EB; /* Windows blue */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  
-  .downloadBtn:hover {
-    background: #1C4ED8; /* Darker blue on hover */
-  }
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  border-bottom: 1px solid #d1d1d1; /* Subtle border */
+  height: 140px; /* Add this line to fix navbar height */
+}
+
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 7rem;
+  height: 100%;
+  padding: 5px 0; /* Add vertical padding */
+}
+
+.navbarLogo {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+/* Logo on the Left */
+.navbarLogo img {
+  height: 1%;
+  width: auto;
+  object-fit: contain;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 19px 19px;
+  height: 180%; /* Make image height match logo container */
+  max-height: 150px; /* Control maximum height */
+  min-width: 120px; /* Increase minimum width */
+}
+
+/* Navigation Links in the Middle */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1; /* Allow nav-links to take up remaining space */
+  justify-content: center; /* Center the navigation links */
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  transition: color 0.3s ease-in-out;
+}
+
+.navItem svg {
+  margin-left: 5px;
+}
+
+.navItem:hover,
+.navItem.active {
+  background: #e1e1e1; /* Light hover background */
+  color: #000;
+}
+
+/* Download Button on the Right */
+.downloadBtn {
+  padding: 0.5rem 1.5rem;
+  background: #2463eb; /* Windows blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.downloadBtn:hover {
+  background: #1c4ed8; /* Darker blue on hover */
+}
