@@ -1,16 +1,9 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+import "./App.css";
 
 function App() {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </HashRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
