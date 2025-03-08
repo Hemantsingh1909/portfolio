@@ -9,13 +9,13 @@ const About = () => {
         <div className='w-2/6 tracking-wide flex flex-col justify-center'>
           <h2 className='text-[#496CF6] text-2xl pb-1 font-bold'>ABOUT ME</h2>
           <h1 className='text-5xl pb-8 font-bold text-black'>Better design, <br />better experience</h1>
-          <p className='font-medium opacity-50'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate, vero?</p>
+          <p className='font-medium opacity-50'>I’m passionate about creating intuitive and visually appealing designs that enhance user experience. With a keen eye for detail and a deep understanding of design principles, I strive to deliver elegant and functional solutions.</p>
         </div>
 
         {/* Right Section */}
         <div className='w-2/6 flex flex-col justify-center'>
           <h2 className='text-black font-medium pb-8 text-4xl'>Connect With Me</h2>
-          <p className='font-medium opacity-50'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates exercitationem commodi et corrupti minima aperiam vero, reiciendis adipisci molestias aliquam.</p>
+          <p className='font-medium opacity-50'>Let’s collaborate and bring ideas to life! Whether you have a project in mind or just want to connect, feel free to reach out. I’d love to hear from you!</p>
           
           {/* Social Icons */}
           <div className="social-icons flex gap-4 pt-5">
