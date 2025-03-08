@@ -1,10 +1,16 @@
-// src/App.jsx
-import { RouterProvider } from 'react-router-dom'
-import router from './router'
-import './App.css'
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
 
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </HashRouter>
+  );
 }
 
-export default App
+export default App;
