@@ -9,7 +9,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/portfolio",
+  base: "/portfolio/",
   server: {
     fs: {
       strict: false, // Allow access to public files
