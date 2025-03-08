@@ -107,20 +107,20 @@ const Footer = () => {
           <div className="flex flex-col items-center p-8 gap-5">
             <div className="social-icons flex gap-4 pt-5">
               <SocialIcon
-                icon={FaFacebook}
-                href="https://linkedin.com/in/username"
+                icon={FaLinkedin}
+                href="https://www.linkedin.com/in/hemantsatwal/"
               />
               <SocialIcon
                 icon={FaInstagram}
-                href="https://instagram.com/username"
+                href="https://www.instagram.com/hemant_satwal/"
               />
               <SocialIcon
                 icon={FaTwitter}
                 href="https://twitter.com/username"
               />
               <SocialIcon
-                icon={FaLinkedin}
-                href="https://linkedin.com/in/username"
+                icon={FaGithub}
+                href="https://github.com/Hemantsingh1909"
               />
             </div>
             <h1 className="text-[#949CB1] text-lg font-normal">

@@ -1,17 +1,17 @@
-import styles from "../styles/Navbar.module.css"; // Update with your styles file
+import styles from "../styles/Navbar.module.css";
 
 const DownloadCV = () => {
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/HEMANT_SINGH_SATWAL_RESUME.pdf"; // Path to the PDF file in the public folder
-    link.download = "Resumé.pdf"; // Name of the downloaded file
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open the generated PDF in a new tab for the user to download
+    window.open("/resume.pdf", "_blank");
   };
 
   return (
-    <button className={styles.downloadBtn} onClick={handleDownload} aria-label="Download CV">
+    <button
+      className={styles.downloadBtn}
+      onClick={handleDownload}
+      aria-label="Download CV as PDF"
+    >
       Download CV
     </button>
   );

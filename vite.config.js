@@ -7,6 +7,11 @@ export default defineConfig({
         plugins: ['@babel/plugin-transform-private-property-in-object']
       }}
   )],
+  server: {
+    fs: {
+      strict: false, // Allow access to public files
+    },
+  },
   css: {
     postcss: {
       plugins: [

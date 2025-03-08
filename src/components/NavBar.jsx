@@ -76,9 +76,7 @@ const NavBar = () => {
         </ul>
 
         {/* Download CV Button on the Right */}
-
-          <DownloadCV/>
-
+        <DownloadCV />
       </div>
     </nav>
   );
