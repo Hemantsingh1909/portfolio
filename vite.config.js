@@ -9,7 +9,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/portfoilo/",  // ✅ Add this line (Replace with your actual GitHub repo name)
+  base: "/portfolio",
   server: {
     fs: {
       strict: false, // Allow access to public files

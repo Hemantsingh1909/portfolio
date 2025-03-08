@@ -12,10 +12,10 @@ const router = createHashRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "about", element: <About /> },
-      { path: "services", element: <Services /> },
-      { path: "pricing", element: <Pricing /> },
-      { path: "contact", element: <Contact /> }
+      { path: "/about", element: <About /> },  // ✅ Ensure paths start with "/"
+      { path: "/services", element: <Services /> },
+      { path: "/pricing", element: <Pricing /> },
+      { path: "/contact", element: <Contact /> }
     ]
   }
 ]);
