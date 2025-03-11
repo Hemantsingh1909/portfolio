@@ -2,6 +2,7 @@ import React from "react";
 import portfolio from "../assets/Portfolio.png";
 import startup from "../assets/startup.png";
 import cartfunctionality from "../assets/cartfunctionality.png";
+import projectEarth from "../assets/projectEarth.png";
 import styles from "../styles/Projects.module.css"; // Import CSS module
 
 // Sample projects data
@@ -31,6 +32,15 @@ const projects = [
     image: startup,
     link: "https://jumkasbymahira.vercel.app/",
     github: "https://github.com/Hemantsingh1909/jumkasbymahira",
+  },
+  {
+    id: 4,
+    title: "Project Earth",
+    description:
+      "A web application for Project Earth built with React & Tailwind CSS.",
+    image: projectEarth,
+    link: "https://project-earth-three.vercel.app/",
+    github: "https://github.com/Hemantsingh1909/projectEarth",
   },
 ];
 
