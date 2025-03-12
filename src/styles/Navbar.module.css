@@ -1,6 +1,6 @@
 /* Navbar Base Styles */
 .navbar {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -15,12 +15,38 @@
   height: auto;
 }
 
+@media (min-width: 640px) {
+  .navbar {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+}
+
 .navbar.scrolled {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-bottom-color: #e2e8f0;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .navbar.scrolled {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar.scrolled {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
 }
 
 .darkNavbar {
@@ -41,25 +67,55 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  height: 4rem;
+  height: 3.5rem;
   overflow: hidden; /* Prevents overflow */
+}
+
+@media (min-width: 640px) {
+  .navbarContainer {
+    height: 3.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbarContainer {
+    height: 4rem;
+  }
 }
 
 .navbarLogo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  height: 3rem; /* Adjust the height to fit inside navbar */
+  height: 2.75rem; /* Adjust the height to fit inside navbar */
   max-height: 100%; /* Ensure it doesn't exceed navbar height */
   width: auto;
   object-fit: contain;
 }
 
+@media (min-width: 640px) {
+  .navbarLogo {
+    height: 3rem;
+  }
+}
+
 /* Logo on the Left */
 .navbarLogo img {
-  height: 7.8rem;
+  height: 6rem;
   width: auto;
   object-fit: contain;
+}
+
+@media (min-width: 640px) {
+  .navbarLogo img {
+    height: 7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbarLogo img {
+    height: 7.8rem;
+  }
 }
 
 /* Navigation Links in the Middle */
@@ -242,5 +298,30 @@
 
   .mobileMenu {
     display: none !important;
+  }
+}
+
+/* Mobile nav items spacing */
+.mobileNavLinks {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 639px) {
+  .mobileNavItem {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Ensure download button is properly sized on mobile */
+@media (max-width: 639px) {
+  .downloadBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }

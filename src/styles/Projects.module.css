@@ -1,8 +1,20 @@
 /* Projects.module.css */
 .projectsSection {
-  padding: 6rem 2rem 4rem;
+  padding: 4rem 1rem 2rem;
   background: white;
   text-align: center;
+}
+
+@media (min-width: 640px) {
+  .projectsSection {
+    padding: 5rem 1.5rem 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .projectsSection {
+    padding: 6rem 2rem 4rem;
+  }
 }
 
 :global(.dark) .projectsSection {
@@ -10,10 +22,24 @@
 }
 
 .heading {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   color: #1e293b;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-weight: bold;
+}
+
+@media (min-width: 640px) {
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
 }
 
 :global(.dark) .heading {
@@ -22,11 +48,24 @@
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   justify-content: center;
   max-width: 1280px;
   margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .projectsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .projectsGrid {
+    gap: 2rem;
+  }
 }
 
 .projectCard {
@@ -115,22 +154,41 @@
 }
 
 .projectIcon {
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+@media (min-width: 640px) {
+  .projectIcon {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
 }
 
 .projectInfo {
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .projectInfo {
+    padding: 1.25rem 1.5rem;
+  }
 }
 
 .projectInfo h3 {
   color: #1e293b;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
+}
+
+@media (min-width: 640px) {
+  .projectInfo h3 {
+    font-size: 1.25rem;
+  }
 }
 
 :global(.dark) .projectInfo h3 {
@@ -139,9 +197,17 @@
 
 .projectInfo p {
   color: #64748b;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   line-height: 1.5;
   flex-grow: 1;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .projectInfo p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 :global(.dark) .projectInfo p {
@@ -192,22 +258,20 @@
 }
 
 /* Media queries for responsive design */
-@media (max-width: 768px) {
-  .projectsSection {
-    padding: 5rem 1rem 3rem;
-  }
-
-  .heading {
-    font-size: 2rem;
-  }
-
+@media (max-width: 640px) {
   .projectsGrid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 641px) and (max-width: 1023px) {
   .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }

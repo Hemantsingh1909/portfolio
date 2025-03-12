@@ -10,11 +10,11 @@ const DownloadCV = () => {
 
   return (
     <button
-      className={styles.downloadBtn}
+      className={`${styles.downloadBtn} text-xs sm:text-sm md:text-base`}
       onClick={handleDownload}
       aria-label="Download CV as PDF"
     >
-      <HiDownload className="h-4 w-4 mr-2" />
+      <HiDownload className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
       <span>Resume</span>
     </button>
   );

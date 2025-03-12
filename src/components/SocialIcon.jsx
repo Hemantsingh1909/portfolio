@@ -9,7 +9,7 @@ const SocialIcon = ({ icon: Icon, href, label }) => {
       className="text-secondary-400 hover:text-primary-500 transition-colors duration-300"
       aria-label={label || "Social media link"}
     >
-      <Icon className="h-6 w-6" />
+      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
     </a>
   );
 };
