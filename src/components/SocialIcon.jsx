@@ -1,24 +1,15 @@
-import React, { useState } from 'react';
+import React from "react";
 
-const SocialIcon = ({ icon, size = 30, href }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const iconStyles = {
-    fontSize: `${size}px`,
-    color: isHovered ? '#496CF6' : '#949CB1',
-    transition: 'color 0.1s ease',
-  };
-
+const SocialIcon = ({ icon: Icon, href, label }) => {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      style={iconStyles}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="text-secondary-400 hover:text-primary-500 transition-colors duration-300"
+      aria-label={label || "Social media link"}
     >
-      {icon()}
+      <Icon className="h-6 w-6" />
     </a>
   );
 };

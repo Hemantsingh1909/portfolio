@@ -1,14 +1,23 @@
 /* Projects.module.css */
 .projectsSection {
-  padding: 4rem 2rem;
+  padding: 6rem 2rem 4rem;
   background: white;
   text-align: center;
 }
 
+:global(.dark) .projectsSection {
+  background: #0f172a;
+}
+
 .heading {
   font-size: 2.5rem;
-  color: white;
+  color: #1e293b;
   margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+:global(.dark) .heading {
+  color: #f8fafc;
 }
 
 .projectsGrid {
@@ -16,36 +25,148 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .projectCard {
-  background: #F8F8F9;
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+:global(.dark) .projectCard {
+  background: #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1);
 }
 
 .projectCard:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+:global(.dark) .projectCard:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.15);
+}
+
+.projectImageContainer {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
 }
 
 .projectImage {
   width: 100%;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+
+.projectImageContainer:hover .projectImage {
+  transform: scale(1.05);
+}
+
+.projectOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.5rem;
+}
+
+.projectImageContainer:hover .projectOverlay {
+  opacity: 1;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.projectLink {
+  background: white;
+  color: #1e293b;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectLink:hover {
+  background: #0ea5e9;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.projectIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.projectInfo {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .projectInfo h3 {
-  color: black;
-  font: bold 11px arial;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+:global(.dark) .projectInfo h3 {
+  color: #f8fafc;
 }
 
 .projectInfo p {
-  color: black;
-  font-size: 1rem;
-  margin: 0.5rem 0;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+:global(.dark) .projectInfo p {
+  color: #cbd5e1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+}
+
+:global(.dark) .tag {
+  background-color: #082f49;
+  color: #7dd3fc;
 }
 
 .links {
@@ -57,13 +178,36 @@
 
 .links a {
   text-decoration: none;
-  background: #007bff;
+  background: #2463eb;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: background 0.3s ease;
+  font-weight: 500;
+  font-size: 0.875rem;
 }
 
 .links a:hover {
-  background: #0056b3;
+  background: #1c4ed8;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .projectsSection {
+    padding: 5rem 1rem 3rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

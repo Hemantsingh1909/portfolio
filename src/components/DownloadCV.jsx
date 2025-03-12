@@ -1,9 +1,11 @@
-import styles from "../styles/Navbar.module.css";
+import React from "react";
+import { HiDownload } from "react-icons/hi";
+import styles from "../styles/Navbar.module.css"; // Import CSS module
 
 const DownloadCV = () => {
   const handleDownload = () => {
     // Open the generated PDF in a new tab for the user to download
-    window.open("/resume.pdf", "_blank");
+    window.open("/resume.pdf", "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -12,7 +14,8 @@ const DownloadCV = () => {
       onClick={handleDownload}
       aria-label="Download CV as PDF"
     >
-      Download CV
+      <HiDownload className="h-4 w-4 mr-2" />
+      <span>Resume</span>
     </button>
   );
 };

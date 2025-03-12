@@ -2,11 +2,36 @@
 .navbar {
   padding: 1rem 2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-  border-bottom: 1px solid #d1d1d1; /* Subtle border */
-  height: 140px; /* Add this line to fix navbar height */
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+  height: auto;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-bottom-color: #e2e8f0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.darkNavbar {
+  background-color: rgba(15, 23, 42, 0.95);
+  color: #f8fafc;
+}
+
+.darkNavbar.scrolled {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  border-bottom-color: #1e293b;
 }
 
 .navbarContainer {
@@ -14,77 +39,208 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 7rem;
-  height: 100%;
-  padding: 5px 0; /* Add vertical padding */
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 4rem;
+  overflow: hidden; /* Prevents overflow */
 }
 
 .navbarLogo {
-  text-align: center;
+  display: flex;
   align-items: center;
-  justify-content: center;
-}
-/* Logo on the Left */
-.navbarLogo img {
-  height: 1%;
+  flex-shrink: 0;
+  height: 3rem; /* Adjust the height to fit inside navbar */
+  max-height: 100%; /* Ensure it doesn't exceed navbar height */
   width: auto;
   object-fit: contain;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  padding: 19px 19px;
-  height: 180%; /* Make image height match logo container */
-  max-height: 150px; /* Control maximum height */
-  min-width: 120px; /* Increase minimum width */
+}
+
+/* Logo on the Left */
+.navbarLogo img {
+  height: 7.8rem;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Navigation Links in the Middle */
 .navLinks {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  flex-grow: 1; /* Allow nav-links to take up remaining space */
-  justify-content: center; /* Center the navigation links */
 }
 
 .navItem {
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: #333;
+  color: #475569;
   text-decoration: none;
   transition: all 0.2s ease;
-  border-radius: 4px;
-  transition: color 0.3s ease-in-out;
+  border-radius: 0.375rem;
 }
 
-.navItem svg {
-  margin-left: 5px;
+.darkNavbar .navItem {
+  color: #cbd5e1;
 }
 
-.navItem:hover,
+.navItem:hover {
+  background: #f1f5f9;
+  color: #0284c7;
+}
+
+.darkNavbar .navItem:hover {
+  background: #1e293b;
+  color: #38bdf8;
+}
+
 .navItem.active {
-  background: #e1e1e1; /* Light hover background */
-  color: #000;
+  color: #0284c7;
+  font-weight: 600;
 }
 
-/* Download Button on the Right */
+.darkNavbar .navItem.active {
+  color: #38bdf8;
+}
+
+/* Right side actions */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Download Button */
 .downloadBtn {
-  padding: 0.5rem 1.5rem;
-  background: #2463eb; /* Windows blue */
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #0284c7;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.375rem;
   font-weight: 500;
+  font-size: 0.875rem;
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 .downloadBtn:hover {
-  background: #1c4ed8; /* Darker blue on hover */
+  background: #0369a1;
+}
+
+/* Mobile menu button */
+.mobileMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: #475569;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.darkNavbar .mobileMenuButton {
+  color: #cbd5e1;
+}
+
+.mobileMenuButton:hover {
+  color: #0284c7;
+}
+
+.darkNavbar .mobileMenuButton:hover {
+  color: #38bdf8;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  display: none;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #e2e8f0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.darkNavbar .mobileMenu {
+  background-color: #0f172a;
+  border-top-color: #1e293b;
+}
+
+.mobileMenuOpen {
+  display: block;
+  max-height: 100vh;
+  opacity: 1;
+}
+
+.mobileNavLinks {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileNavItem {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.darkNavbar .mobileNavItem {
+  color: #cbd5e1;
+}
+
+.mobileNavItem:hover {
+  background: #f1f5f9;
+  color: #0284c7;
+}
+
+.darkNavbar .mobileNavItem:hover {
+  background: #1e293b;
+  color: #38bdf8;
+}
+
+.mobileNavItem.active {
+  color: #0284c7;
+  font-weight: 600;
+}
+
+.darkNavbar .mobileNavItem.active {
+  color: #38bdf8;
+}
+
+.mobileThemeToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+  }
+
+  .mobileMenuButton {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none !important;
+  }
 }
