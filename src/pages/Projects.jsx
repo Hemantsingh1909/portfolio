@@ -3,6 +3,7 @@ import portfolio from "../assets/Portfolio.png";
 import startup from "../assets/startup.png";
 import cartfunctionality from "../assets/cartfunctionality.png";
 import projectEarth from "../assets/projectEarth.png";
+import rangerover from "../assets/rangerover.png";
 import styles from "../styles/Projects.module.css"; // Import CSS module
 import { FaGithub } from "react-icons/fa";
 import { HiExternalLink } from "react-icons/hi";
@@ -46,6 +47,16 @@ const projects = [
     image: projectEarth,
     link: "https://project-earth-three.vercel.app/",
     github: "https://github.com/Hemantsingh1909/projectEarth",
+    tags: ["React", "Tailwind CSS", "Environmental"],
+  },
+  {
+    id: 5,
+    title: "Range Rover Demo",
+    description:
+      "Demo Website inspired from Range Rover using React & Tailwind CSS.",
+    image: rangerover,
+    link: "https://range-rover-demo-ten.vercel.app/",
+    github: "https://github.com/Hemantsingh1909/RangeRoverDemo",
     tags: ["React", "Tailwind CSS", "Environmental"],
   },
 ];
