@@ -8,8 +8,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:pt-20 lg:pb-10 mt-12 sm:mt-16 md:mt-20">
-      <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:pt-20 lg:pb-10 mt-12 sm:mt-16 md:mt-20">
+      <div className="min-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
         {/* Text Content */}
         <div className="lg:w-1/2 space-y-4 sm:space-y-6 text-center lg:text-left order-2 lg:order-1">
           <div className="inline-block px-3 py-1 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-2">
