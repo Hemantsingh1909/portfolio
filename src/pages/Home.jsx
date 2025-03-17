@@ -8,10 +8,10 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:pt-20 lg:pb-10 mt-12 sm:mt-16 md:mt-20">
-      <div className="min-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
+    <div className="max-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:pt-20 lg:pb-10 mt-12 sm:mt-16 md:mt-20">
+      <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
         {/* Text Content */}
-        <div className="lg:w-1/2 space-y-4 sm:space-y-6 text-center lg:text-left order-2 lg:order-1">
+        <div className="lg:w-2/4 space-y-4 sm:space-y-6 text-center lg:text-left order-2 lg:order-1">
           <div className="inline-block px-3 py-1 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-2">
             Software Developer
           </div>
@@ -76,7 +76,7 @@ const Home = () => {
         </div>
 
         {/* Image Container */}
-        <div className="lg:w-1/2 relative flex justify-center mb-8 lg:mb-0 order-1 lg:order-2">
+        <div className="lg:w-1/2 relative flex justify-center mb-8 lg:mb-0 order-1 lg:order-2 hidden lg:block">
           <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl px-4 sm:px-0">
             {/* Blue Background Shape */}
             <div className="absolute inset-0 flex justify-center items-center">

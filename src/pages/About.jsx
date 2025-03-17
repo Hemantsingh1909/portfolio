@@ -38,7 +38,7 @@ const skills = [
 
 const About = () => {
   return (
-    <div className="py-12 sm:py-16 md:py-20 px-4 max-w-7xl mx-auto mt-10 sm:mt-16 md:mt-16 lg:mt-20">
+    <div className="py-12 sm:py-16 md:py-20 px-4 max-w-7xl mx-auto lg:mt-20 mt-12 sm:mt-16 md:mt-20">
       {/* About Me Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 sm:mb-16 md:mb-20">
         <div className="space-y-4 sm:space-y-6">

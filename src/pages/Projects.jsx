@@ -63,7 +63,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="bg-white py-16 sm:py-18 md:py-20">
+    <div className="bg-white py-16 sm:py-18 md:py-20 mt-12 sm:mt-16 md:mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
