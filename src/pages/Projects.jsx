@@ -31,7 +31,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "E-commerce Startup",
+    title: "E-Commerce Startup",
     description:
       "An e-commerce Jwellery store for a client built with React & Tailwind CSS.",
     image: startup,
