@@ -67,7 +67,7 @@ const NavBar = () => {
           ))}
           <li>
             <a
-              href="https://medium.com/@hemantsingh1909/boosting-productivity-with-cursor-ai-how-ai-powered-autocompletion-and-code-suggestions-improve-9a5d0fb839e0"
+              href="https://medium.com/@hemantsingh1909"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.navItem}
@@ -123,7 +123,7 @@ const NavBar = () => {
           ))}
           <li>
             <a
-              href="https://medium.com/@hemantsingh1909/boosting-productivity-with-cursor-ai-how-ai-powered-autocompletion-and-code-suggestions-improve-9a5d0fb839e0"
+              href="https://medium.com/@hemantsingh1909"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.mobileNavItem}
