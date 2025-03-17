@@ -65,6 +65,16 @@ const NavBar = () => {
               </NavLink>
             </li>
           ))}
+          <li>
+            <a
+              href="https://medium.com/@hemantsingh1909/boosting-productivity-with-cursor-ai-how-ai-powered-autocompletion-and-code-suggestions-improve-9a5d0fb839e0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.navItem}
+            >
+              Blog
+            </a>
+          </li>
         </ul>
 
         {/* Right side actions */}
@@ -92,7 +102,9 @@ const NavBar = () => {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}
+        className={`${styles.mobileMenu} ${
+          mobileMenuOpen ? styles.mobileMenuOpen : ""
+        }`}
         aria-hidden={!mobileMenuOpen}
       >
         <ul className={styles.mobileNavLinks}>
@@ -109,6 +121,17 @@ const NavBar = () => {
               </NavLink>
             </li>
           ))}
+          <li>
+            <a
+              href="https://your-blog-url.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mobileNavItem}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Blog
+            </a>
+          </li>
           <li className={styles.mobileNavItem}>
             <DownloadCV />
           </li>
