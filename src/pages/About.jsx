@@ -38,15 +38,15 @@ const skills = [
 
 const About = () => {
   return (
-    <div className="py-12 sm:py-16 md:py-20 px-4 max-w-7xl mx-auto mt-10 sm:mt-16">
+    <div className="py-12 sm:py-16 md:py-20 px-4 max-w-7xl mx-auto mt-10 sm:mt-16 md:mt-16 lg:mt-20">
       {/* About Me Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 sm:mb-16 md:mb-20">
         <div className="space-y-4 sm:space-y-6">
           <div className="inline-block px-3 py-1 rounded-full bg-primary-50 text-primary-600 text-xs sm:text-sm font-medium">
             About Me
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-900">
-            Better design, <br />
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-900 break-words">
+            Better design, <br className="hidden sm:block" />
             better experience
           </h2>
           <p className="text-base sm:text-lg text-secondary-600 leading-relaxed">
@@ -117,7 +117,7 @@ const About = () => {
                   {skill.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-secondary-900 mb-1 sm:mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-secondary-900 mb-1 sm:mb-2 break-words">
                     {skill.title}
                   </h3>
                   <p className="text-secondary-600 text-sm sm:text-base">

@@ -43,6 +43,18 @@ const NavBar = () => {
     };
   }, [mobileMenuOpen]);
 
+  // Close mobile menu when window is resized to desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
+
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.navbarContainer}>
@@ -105,37 +117,39 @@ const NavBar = () => {
         className={`${styles.mobileMenu} ${
           mobileMenuOpen ? styles.mobileMenuOpen : ""
         }`}
-        aria-hidden={!mobileMenuOpen}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-menu-title"
       >
-        <ul className={styles.mobileNavLinks}>
+        <div className={styles.mobileNavLinks}>
+          <h2 id="mobile-menu-title" className="sr-only">
+            Mobile Navigation Menu
+          </h2>
           {["Home", "About", "Projects", "Contact"].map((item) => (
-            <li key={item}>
-              <NavLink
-                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                className={({ isActive }) =>
-                  `${styles.mobileNavItem} ${isActive ? styles.active : ""}`
-                }
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item}
-              </NavLink>
-            </li>
-          ))}
-          <li>
-            <a
-              href="https://medium.com/@hemantsingh1909"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.mobileNavItem}
+            <NavLink
+              key={item}
+              to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+              className={({ isActive }) =>
+                `${styles.mobileNavItem} ${isActive ? styles.active : ""}`
+              }
               onClick={() => setMobileMenuOpen(false)}
             >
-              Blog
-            </a>
-          </li>
-          <li className={styles.mobileNavItem}>
+              {item}
+            </NavLink>
+          ))}
+          <a
+            href="https://medium.com/@hemantsingh1909"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mobileNavItem}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Blog
+          </a>
+          <div className={styles.mobileNavItem}>
             <DownloadCV />
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </nav>
   );

@@ -3,17 +3,20 @@
   padding: 4rem 1rem 2rem;
   background: white;
   text-align: center;
+  margin-top: 3.5rem;
 }
 
 @media (min-width: 640px) {
   .projectsSection {
     padding: 5rem 1.5rem 3rem;
+    margin-top: 4rem;
   }
 }
 
 @media (min-width: 768px) {
   .projectsSection {
     padding: 6rem 2rem 4rem;
+    margin-top: 4.5rem;
   }
 }
 
@@ -78,6 +81,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 :global(.dark) .projectCard {
@@ -101,6 +105,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  width: 100%;
 }
 
 .projectImage {
@@ -183,6 +188,7 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
   font-size: 1.125rem;
+  word-wrap: break-word;
 }
 
 @media (min-width: 640px) {
@@ -201,6 +207,7 @@
   line-height: 1.5;
   flex-grow: 1;
   font-size: 0.875rem;
+  word-wrap: break-word;
 }
 
 @media (min-width: 640px) {
@@ -228,6 +235,7 @@
   color: #0369a1;
   padding: 0.25rem 0.625rem;
   border-radius: 9999px;
+  white-space: nowrap;
 }
 
 :global(.dark) .tag {
@@ -248,19 +256,16 @@
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  transition: background 0.3s ease;
-  font-weight: 500;
-  font-size: 0.875rem;
 }
 
 .links a:hover {
-  background: #1c4ed8;
+  background: #1e40af;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 640px) {
   .projectsGrid {
     grid-template-columns: 1fr;
+    max-width: 400px;
   }
 }
 
@@ -272,6 +277,35 @@
 
 @media (min-width: 1024px) {
   .projectsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 360px) {
+  .projectsSection {
+    padding: 3.5rem 0.75rem 1.5rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .projectInfo {
+    padding: 0.75rem 1rem;
+  }
+
+  .projectInfo h3 {
+    font-size: 1rem;
+  }
+
+  .projectInfo p {
+    font-size: 0.8125rem;
+  }
+
+  .tag {
+    font-size: 0.6875rem;
+    padding: 0.1875rem 0.5rem;
   }
 }

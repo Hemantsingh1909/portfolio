@@ -15,8 +15,26 @@ const Layout = () => {
     });
   }, [location.pathname]);
 
+  // Add meta viewport tag to ensure proper mobile scaling
+  useEffect(() => {
+    // Ensure viewport meta tag exists and is properly configured
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (!viewportMeta) {
+      viewportMeta = document.createElement("meta");
+      viewportMeta.name = "viewport";
+      document.head.appendChild(viewportMeta);
+    }
+
+    // Set viewport for optimal display on all device sizes including tablets
+    viewportMeta.content =
+      "width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover";
+
+    // Function to handle scrolling to top on route changes
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
       <NavBar />
       <main className="flex-grow">
         <Outlet /> {/* This renders the current route's component */}
