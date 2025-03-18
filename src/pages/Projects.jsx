@@ -81,15 +81,32 @@ const Projects = () => {
               key={project.id}
               className="bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
             >
-              <div className="relative pb-[60%] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="absolute top-0 left-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                  width="600"
-                  height="360"
-                />
+              <div className="relative pb-[60%] overflow-hidden group">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${project.title} live website`}
+                  className="absolute inset-0 z-10 focus:outline-none focus:ring-4 focus:ring-primary-500 focus:ring-offset-2"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 group-focus:scale-105"
+                    loading="lazy"
+                    width="600"
+                    height="360"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-10 sm:bg-opacity-0 sm:group-hover:bg-opacity-30 sm:group-focus:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div className="sm:translate-y-4 sm:opacity-0 opacity-100 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-focus:translate-y-0 sm:group-focus:opacity-100 transition-all duration-300">
+                      <span className="bg-white text-primary-600 font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded-md shadow-md sm:shadow-lg flex items-center text-sm sm:text-base">
+                        <span className="sm:hidden">Preview</span>
+                        <span className="hidden sm:inline">View Live Site</span>
+                        <HiExternalLink className="ml-1 text-lg" />
+                      </span>
+                    </div>
+                  </div>
+                </a>
               </div>
               <div className="p-4 sm:p-5 md:p-6">
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
