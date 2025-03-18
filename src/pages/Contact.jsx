@@ -65,7 +65,7 @@ const Contact = () => {
                     Location
                   </h3>
                   <p className="text-sm sm:text-base text-secondary-600 mt-1">
-                    Mumbai, Maharashtra, India
+                    Bengaluru, Karnataka, India
                   </p>
                 </div>
               </div>
@@ -175,8 +175,8 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="John Doe"
+                    className="w-full !important px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    placeholder="Your Name"
                     required
                   />
                 </div>
@@ -213,7 +213,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    className="w-full !important px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     placeholder="example@domain.com"
                     required
                   />
@@ -233,6 +233,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     placeholder="+1 (123) 456-7890"
+                    required
                   />
                 </div>
               </div>
@@ -252,7 +253,6 @@ const Contact = () => {
                   rows="5"
                   className="w-full px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Your message here..."
-                  required
                 ></textarea>
               </div>
 
