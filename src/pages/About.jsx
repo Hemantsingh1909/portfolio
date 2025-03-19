@@ -96,7 +96,7 @@ const About = () => {
             </div>
             <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl rounded-md transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
-                Master of Technology (Computer Science)
+                Bachelor of Technology (Computer Science)
               </h4>
               <p className="text-primary-600 text-sm sm:text-base">
                 Apr 2017 - Dec 2021
