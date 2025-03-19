@@ -16,9 +16,9 @@ const skills = [
   },
   {
     icon: <HiServer className="h-5 w-5 sm:h-6 sm:w-6 text-primary-500" />,
-    title: "Backend Development",
+    title: "Model Building",
     description:
-      "Creating robust server-side applications with Node.js, Express, and MongoDB.",
+      "Creating robust models using machine learning and deep learning techniques.",
   },
   {
     icon: (
@@ -50,15 +50,18 @@ const About = () => {
             better experience
           </h2>
           <p className="text-base sm:text-lg text-secondary-600 leading-relaxed">
-            I'm a passionate software developer with expertise in creating
-            modern web applications. With a strong foundation in both frontend
-            and backend technologies, I strive to build intuitive and visually
-            appealing solutions that solve real-world problems.
+            I’m a passionate software developer with expertise in building
+            modern, scalable web applications. With a strong foundation in both
+            frontend and backend technologies, I focus on crafting intuitive,
+            high-performance solutions that address real-world challenges.
           </p>
           <p className="text-base sm:text-lg text-secondary-600 leading-relaxed">
-            My approach combines technical excellence with creative
-            problem-solving, ensuring that every project I work on is not only
-            functional but also provides an exceptional user experience.
+            My expertise spans data-driven model building, optimization, and
+            insights generation, leveraging cutting-edge AI techniques to
+            extract meaningful patterns and drive impactful decisions. I combine
+            technical excellence with creative problem-solving to ensure that
+            every project I work on is both highly functional and delivers an
+            exceptional user experience.
           </p>
         </div>
 
@@ -69,10 +72,22 @@ const About = () => {
           <div className="space-y-4">
             <div className="border-l-2 border-primary-500 pl-3 sm:pl-4 py-2">
               <h4 className="font-medium text-secondary-900">
-                Software Developer
+                Master of Technology (Data Science)
               </h4>
               <p className="text-primary-600 text-sm sm:text-base">
-                2021 - Present
+                Apr 2024 - Present
+              </p>
+              <p className="text-secondary-600 mt-1 text-sm sm:text-base">
+                Applying machine learning and deep learning techniques to
+                real-world problems.
+              </p>
+            </div>
+            <div className="border-l-2 border-primary-500 pl-3 sm:pl-4 py-2">
+              <h4 className="font-medium text-secondary-900">
+                Software Developer
+              </h4>
+              <p className="text-secondary-500 text-sm sm:text-base">
+                Jan 2021 - Apr 2023
               </p>
               <p className="text-secondary-600 mt-1 text-sm sm:text-base">
                 Working on various web development projects using modern
@@ -81,10 +96,10 @@ const About = () => {
             </div>
             <div className="border-l-2 border-secondary-300 pl-3 sm:pl-4 py-2">
               <h4 className="font-medium text-secondary-900">
-                Computer Science Degree
+                Master of Technology (Computer Science)
               </h4>
               <p className="text-secondary-500 text-sm sm:text-base">
-                2017 - 2021
+                Apr 2017 - Dec 2021
               </p>
               <p className="text-secondary-600 mt-1 text-sm sm:text-base">
                 Studied computer science with a focus on web technologies and
