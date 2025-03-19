@@ -70,7 +70,7 @@ const About = () => {
             My Journey
           </h3>
           <div className="space-y-4">
-            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl rounded-md transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
                 Master of Technology (Data Science)
               </h4>
@@ -82,7 +82,7 @@ const About = () => {
                 real-world problems.
               </p>
             </div>
-            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl rounded-md transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
                 Software Developer
               </h4>
@@ -94,7 +94,7 @@ const About = () => {
                 technologies.
               </p>
             </div>
-            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl rounded-md transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
                 Master of Technology (Computer Science)
               </h4>
