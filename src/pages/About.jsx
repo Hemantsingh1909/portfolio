@@ -65,12 +65,12 @@ const About = () => {
           </p>
         </div>
 
-        <div className="bg-white p-5 sm:p-6 md:p-8 rounded-xl shadow-soft">
+        <div className="bg-white p-5 sm:p-6 md:p-8 rounded-xl shadow-soft cursor-default">
           <h3 className="text-xl sm:text-2xl font-semibold text-secondary-900 mb-4 sm:mb-6">
             My Journey
           </h3>
           <div className="space-y-4">
-            <div className="border-l-2 border-primary-500 pl-3 sm:pl-4 py-2">
+            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
                 Master of Technology (Data Science)
               </h4>
@@ -82,11 +82,11 @@ const About = () => {
                 real-world problems.
               </p>
             </div>
-            <div className="border-l-2 border-primary-500 pl-3 sm:pl-4 py-2">
+            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
                 Software Developer
               </h4>
-              <p className="text-secondary-500 text-sm sm:text-base">
+              <p className="text-primary-600 text-sm sm:text-base">
                 Jan 2021 - Apr 2023
               </p>
               <p className="text-secondary-600 mt-1 text-sm sm:text-base">
@@ -94,11 +94,11 @@ const About = () => {
                 technologies.
               </p>
             </div>
-            <div className="border-l-2 border-secondary-300 pl-3 sm:pl-4 py-2">
+            <div className="border-l-2 hover:border-primary-600 pl-3 sm:pl-4 py-2 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
               <h4 className="font-medium text-secondary-900">
                 Master of Technology (Computer Science)
               </h4>
-              <p className="text-secondary-500 text-sm sm:text-base">
+              <p className="text-primary-600 text-sm sm:text-base">
                 Apr 2017 - Dec 2021
               </p>
               <p className="text-secondary-600 mt-1 text-sm sm:text-base">
