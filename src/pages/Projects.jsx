@@ -11,15 +11,6 @@ import { HiExternalLink } from "react-icons/hi";
 // Sample projects data
 const projects = [
   {
-    id: 1,
-    title: "Portfolio Website",
-    description: "A personal portfolio built with React & Tailwind CSS.",
-    image: portfolio,
-    link: "https://portfolio-hemantsingh1909s-projects.vercel.app/",
-    github: "https://github.com/Hemantsingh1909/portfolio",
-    tags: ["React", "Tailwind CSS", "Vite"],
-  },
-  {
     id: 2,
     title: "E-Commerce Cart Functionality",
     description:
