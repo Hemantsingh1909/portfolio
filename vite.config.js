@@ -8,6 +8,9 @@ export default defineConfig({
       }}
   )],
   server: {
+    proxy: {
+      "/api": "http://localhost:3000", // proxy API to vercel dev
+    },
     fs: {
       strict: false, // Allow access to public files
     },
@@ -23,4 +26,5 @@ export default defineConfig({
   build: {
     outDir: 'dist'
   },
+  assetsInclude: ["**/*.html"],
 })

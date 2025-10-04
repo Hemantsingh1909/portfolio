@@ -20,18 +20,30 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real application, you would handle form submission here
-    alert("Thank you for your message! I'll get back to you soon.");
-    // Reset form
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        alert(data.error || "Something went wrong.");
+        return;
+      }
+      if (data.note) {
+        // Owner mail sent but auto-reply failed
+        console.warn(data.note, data.details);
+      }
+      alert("Thank you! Your message has been sent.");
+      setFormData({ name: "", company: "", email: "", phone: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      alert("Network error. Please try again.");
+    }
   };
 
   return (
