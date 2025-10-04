@@ -26,5 +26,4 @@ export default defineConfig({
   build: {
     outDir: 'dist'
   },
-  assetsInclude: ["**/*.html"],
 })
