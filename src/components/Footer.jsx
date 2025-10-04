@@ -39,7 +39,7 @@ const Footer = () => {
               <div className="flex items-start text-secondary-300">
                 <HiLocationMarker className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 mt-1 flex-shrink-0" />
                 <address className="not-italic text-sm sm:text-base">
-                  Indira Nagar, Sector-11, Lucknow, Uttar Pradesh, India
+                  Bangalore, India
                 </address>
               </div>
             </div>

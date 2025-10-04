@@ -65,7 +65,7 @@ const Contact = () => {
                     Location
                   </h3>
                   <p className="text-sm sm:text-base text-secondary-600 mt-1">
-                    Bengaluru, Karnataka, India
+                    Bangalore, India
                   </p>
                 </div>
               </div>
