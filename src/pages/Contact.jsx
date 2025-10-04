@@ -98,10 +98,10 @@ const Contact = () => {
                     Call
                   </h3>
                   <a
-                    href="tel:+919175673432"
+                    href="tel:7355052652"
                     className="text-sm sm:text-base text-primary-600 hover:text-primary-700 mt-1 inline-block"
                   >
-                    +91 9175673432
+                    +91 7355052652
                   </a>
                 </div>
               </div>
@@ -114,7 +114,7 @@ const Contact = () => {
                 <div className="flex space-x-4">
                   {/* Social icons */}
                   <a
-                    href="https://github.com/hemants1703"
+                    href="https://github.com/Hemantsingh1909"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-secondary-600 hover:text-primary-600 transition-colors"
@@ -123,7 +123,7 @@ const Contact = () => {
                     <FaGithub className="text-xl sm:text-2xl" />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/hemant-singh-0bb391221/"
+                    href="https://www.linkedin.com/in/hemantsatwal/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-secondary-600 hover:text-primary-600 transition-colors"
@@ -132,16 +132,7 @@ const Contact = () => {
                     <FaLinkedin className="text-xl sm:text-2xl" />
                   </a>
                   <a
-                    href="https://twitter.com/hemantsingh1909"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-secondary-600 hover:text-primary-600 transition-colors"
-                    aria-label="Twitter"
-                  >
-                    <FaTwitter className="text-xl sm:text-2xl" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/hemantcreates"
+                    href="https://www.instagram.com/hemant_satwal/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-secondary-600 hover:text-primary-600 transition-colors"
