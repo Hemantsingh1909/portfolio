@@ -1,4 +1,4 @@
-// api/contact.js
+// pages/api/contact.js
 import { Resend } from "resend";
 
 export default async function handler(req, res) {
@@ -6,8 +6,7 @@ export default async function handler(req, res) {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
 
-  // NOTE: In Vercel Node funcs, body may be a string. Parse if needed.
-  const body =
+  let body =
     typeof req.body === "string"
       ? JSON.parse(req.body || "{}")
       : req.body || {};
@@ -19,12 +18,28 @@ export default async function handler(req, res) {
       .json({ error: "Missing required fields (name, email, message)" });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const FROM = process.env.CONTACT_FROM_EMAIL; // e.g. no-reply@updates.hemantsatwal.in (verified in Resend)
-  const TO = process.env.CONTACT_TO_EMAIL; // your receiving inbox
+  const {
+    RESEND_API_KEY,
+    CONTACT_FROM_EMAIL,
+    CONTACT_TO_EMAIL,
+    // Optional: specify a Drive/remote image URL here (or compute from ID)
+    DRIVE_IMAGE_URL,
+  } = process.env;
 
+  if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL || !CONTACT_TO_EMAIL) {
+    console.error("Missing one or more required env vars.");
+    return res.status(500).json({
+      error:
+        "Email service not configured. Check RESEND_API_KEY, CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL.",
+    });
+  }
+
+  const resend = new Resend(RESEND_API_KEY);
+  const FROM = CONTACT_FROM_EMAIL;
+  const TO = CONTACT_TO_EMAIL;
+
+  // --- 1) send owner email (no changes) ---
   try {
-    // 1) Send to you
     await resend.emails.send({
       from: `Hemant Satwal <${FROM}>`,
       to: [TO],
@@ -42,113 +57,132 @@ ${message}`,
     console.error("Owner email failed:", err);
     return res
       .status(500)
-      .json({ error: err?.message || "Failed to send owner email" });
+      .json({ error: "Failed to send owner email", details: String(err) });
   }
 
+  // --- 2) auto-reply with inline attachment fetched from Drive (server-side) ---
+  // Use DRIVE_IMAGE_URL env var (recommended) OR you can hardcode a Drive uc?export=view&id=... link
+  const driveUrl =
+    DRIVE_IMAGE_URL ||
+    "https://drive.google.com/uc?export=view&id=1ATcW2oAjjTqnhhgN3F_pnfSENsdVRUne";
+
+  // helper to fetch and convert to base64
+  async function fetchImageAsBase64(url) {
+    try {
+      const fetchRes = await fetch(url, { redirect: "follow" });
+      if (!fetchRes.ok) {
+        throw new Error(
+          `Fetch failed: ${fetchRes.status} ${fetchRes.statusText}`
+        );
+      }
+      const contentType =
+        fetchRes.headers.get("content-type") || "application/octet-stream";
+      const arrayBuf = await fetchRes.arrayBuffer();
+      const buffer = Buffer.from(arrayBuf);
+      const sizeBytes = buffer.length;
+
+      // safety check - adjust max as needed (here ~3MB)
+      const MAX_BYTES = 3 * 1024 * 1024;
+      if (sizeBytes > MAX_BYTES) {
+        throw new Error(
+          `Image too large (${Math.round(
+            sizeBytes / 1024
+          )} KB). Max allowed ${Math.round(MAX_BYTES / 1024)} KB`
+        );
+      }
+
+      const base64 = buffer.toString("base64");
+      return { base64, contentType, sizeBytes };
+    } catch (err) {
+      // bubble error up
+      throw err;
+    }
+  }
+
+  let attachmentsForAutoReply = [];
   try {
-    // 2) Auto-reply to sender (HTML + text)
-    await resend.emails.send({
-      from: `Hemant Satwal <${FROM}>`,
-      to: [email],
-      subject: "Thanks — we received your message",
-      html: `
-  <!doctype html>
-  <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-  </head>
-  <body style="margin:0; padding:0; background:#f5f5fb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#111;">
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr>
-        <td align="center" style="padding:24px 12px;">
-          <!-- Container -->
-          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px; width:100%; background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(13,12,20,0.08);">
-            <!-- Top bar / Logo -->
-            <tr>
-              <td style="padding:20px 24px; text-align:left; background:linear-gradient(90deg, #6D28D9 0%, #5B21B6 100%);">
-                <img src="/Users/hemantsingh/Developer/portfolio/dist/assets/email-banner.png" alt="Hemant Satwal" width="140" style="display:block; border:0; max-width:140px; height:auto;">
-              </td>
-            </tr>
+    // try to fetch the drive image and use as inline attachment
+    const { base64, contentType, sizeBytes } = await fetchImageAsBase64(
+      driveUrl
+    );
+    attachmentsForAutoReply.push({
+      content: base64,
+      filename: "hero-image",
+      contentType,
+      contentId: "hero-image",
+    });
+    console.log(
+      `Fetched image from drive (${Math.round(
+        sizeBytes / 1024
+      )} KB) and attached as inline.`
+    );
+  } catch (err) {
+    console.warn(
+      "Could not fetch/attach Drive image for auto-reply:",
+      String(err)
+    );
+    // Not fatal — we'll still send the auto-reply without the image
+  }
 
-            <!-- Hero Image -->
-            <tr>
-              <td style="padding:0;">
-                <img src="https://www.hemantsatwal.in/assets/email-hero.jpg" alt="Thanks for contacting Hemant" width="600" style="width:100%; height:auto; display:block;">
-              </td>
-            </tr>
+  // prepare html that uses cid if available; fallback to no-image layout
+  const htmlWithCid = `
+    <!doctype html>
+    <html>
+    <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial; color:#111; margin:0;">
+      <div style="max-width:600px;margin:auto;background:#fff;padding:20px;border-radius:8px;">
+        ${
+          attachmentsForAutoReply.length
+            ? `<div style="text-align:center;"><img src="cid:hero-image" alt="hero" style="max-width:100%;height:auto;border-radius:8px;"></div>`
+            : ""
+        }
+        <h2>Hi ${name},</h2>
+        <p>Thank you for reaching out! We’ve received your message and appreciate your interest.</p>
+        <div style="background:#fbfbff;border-left:4px solid #6D28D9;padding:12px;border-radius:6px;">
+          <strong>Your message</strong>
+          <div style="white-space:pre-wrap;margin-top:8px;">${message}</div>
+        </div>
+        <p>I’ll review your inquiry and get back to you within 1–2 business days.</p>
+        <div style="text-align:center;margin:20px 0;">
+          <a href="https://www.hemantsatwal.in" style="background:#6D28D9;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;display:inline-block;font-weight:600;">View More</a>
+        </div>
+        <p>Best regards,<br><strong>Hemant Satwal</strong><br><a href="https://www.hemantsatwal.in">www.hemantsatwal.in</a></p>
+      </div>
+    </body>
+    </html>
+  `;
 
-            <!-- Body -->
-            <tr>
-              <td style="padding:28px 32px;">
-                <h1 style="margin:0 0 12px 0; font-size:20px; line-height:1.2; color:#0f172a;">Hi ${name},</h1>
-                <p style="margin:0 0 16px 0; color:#334155; font-size:15px;">
-                  Thank you for reaching out — I’ve received your message and really appreciate your interest.
-                </p>
-
-                <!-- Message box -->
-                <div style="margin:18px 0; padding:14px 16px; background:#fbfbff; border-left:4px solid #6D28D9; border-radius:6px; color:#334155;">
-                  <strong style="display:block; margin-bottom:8px;">Your message</strong>
-                  <div style="white-space:pre-wrap; font-size:14px; line-height:1.5;">${message}</div>
-                </div>
-
-                <p style="margin:0 0 18px 0; color:#334155; font-size:15px;">
-                  I’ll review your inquiry and get back to you within 1–2 business days. If it’s urgent, you can reply to this email.
-                </p>
-
-                <!-- CTA -->
-                <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:20px 0;">
-                  <tr>
-                    <td align="center">
-                      <a href="https://www.hemantsatwal.in" target="_blank" rel="noopener" style="background:#6D28D9; color:#ffffff; text-decoration:none; padding:12px 22px; border-radius:8px; display:inline-block; font-weight:600; font-size:15px;">
-                        View More
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-
-                <p style="margin:22px 0 0 0; color:#475569; font-size:14px;">
-                  Best regards,<br>
-                  <strong style="color:#0f172a;">Hemant Satwal</strong><br>
-                  <a href="https://www.hemantsatwal.in" style="color:#6D28D9; text-decoration:none;">www.hemantsatwal.in</a>
-                </p>
-              </td>
-            </tr>
-
-            <!-- Footer -->
-            <tr>
-              <td style="padding:14px 18px; background:#fafafa; text-align:center; color:#94a3b8; font-size:12px;">
-                You received this email because you contacted Hemant Satwal. If this wasn't you, please ignore this message.
-              </td>
-            </tr>
-
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
-  </html>
-  `,
-      text: `Hi ${name},
+  const textFallback = `Hi ${name},
 
 Thank you for reaching out — I’ve received your message and appreciate your interest.
 
 Your message:
 ${message}
 
-I will review your inquiry and get back to you within 1–2 business days. If this is urgent, please reply to this email.
+I will review your inquiry and get back to you within 1–2 business days. If urgent, reply to this email.
 
 Best regards,
 Hemant Satwal
-https://www.hemantsatwal.in`,
+https://www.hemantsatwal.in`;
+
+  // attempt sending auto-reply
+  try {
+    await resend.emails.send({
+      from: `Hemant Satwal <${FROM}>`,
+      to: [email],
+      subject: "Thanks — we received your message",
+      html: htmlWithCid,
+      text: textFallback,
+      attachments: attachmentsForAutoReply.length
+        ? attachmentsForAutoReply
+        : undefined,
     });
   } catch (err) {
-    console.error("Auto-reply failed:", err);
-    // Not fatal for the user; still return ok so the form succeeds.
+    console.error("Auto-reply send failed:", err);
+    // Not fatal for the form; return OK with a note so front-end knows email reached owner
     return res.status(200).json({
       ok: true,
-      note: "Owner mail sent; auto-reply failed",
-      details: err?.message,
+      note: "Owner email sent; auto-reply failed to send",
+      autoReplyError: String(err),
     });
   }
 
